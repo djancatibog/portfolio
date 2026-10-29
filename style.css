@@ -176,3 +176,56 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 .chips.learning li { border-style: dashed; color: #a3a3a3; }
 
 .note { margin-top: 12px; font-size: 0.85rem; color: #777; }
+
+
+/* Certifications and Contact */
+.two {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0 48px;
+}
+
+.rows { list-style: none; border-top: 1px solid #1f1f1f; }
+.rows li { border-bottom: 1px solid #1f1f1f; }
+
+.certs li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 4px;
+  font-size: 0.92rem;
+  color: #d4d4d4;
+}
+.certs small { font-size: 0.75rem; color: #666; white-space: nowrap; }
+
+.contact a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 4px;
+  font-size: 0.92rem;
+  color: #d4d4d4;
+  transition: color 0.2s ease, padding 0.2s ease;
+}
+.contact a::after {
+  content: "↗";
+  color: #555;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.contact a:hover { color: #fff; padding-left: 10px; }
+.contact a:hover::after { color: #fff; transform: translate(2px, -2px); }
+
+.contact a.copy::after { content: "Copy"; font-size: 0.75rem; letter-spacing: 0.04em; }
+.contact a.copy:hover::after { transform: none; }
+.contact a.copy.copied::after { content: "Copied ✓"; color: #fff; }
+
+.foot {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px;
+  border-top: 1px solid #1f1f1f;
+  text-align: center;
+  font-size: 0.78rem;
+  color: #555;
+}

@@ -104,8 +104,65 @@
       </ul>
       <p class="note">Studying these through my coursework and practice projects.</p>
     </section>
+    <div class="two">
+
+      <section id="certifications">
+        <h2 class="label">Certifications</h2>
+        <ul class="rows certs">
+          <li><span>Python Essentials 1</span><small>Certificate</small></li>
+          <li><span>Intro to Modern AI</span><small>Certificate</small></li>
+          <li><span>Digital Safety and Security Awareness</span><small>Certificate</small></li>
+          <li><span>Skills to Succeed</span><small>Certificate</small></li>
+          <li><span>DevRoutes</span><small>Seminar</small></li>
+        </ul>
+      </section>
+
+      <section id="contact">
+        <h2 class="label">Contact</h2>
+        <ul class="rows contact">
+          <li><a href="#" id="copy-email" class="copy" data-email="catibogdjan@gmail.com">Email</a></li>
+          <li><a href="https://www.linkedin.com/in/djan-matthew-catibog-bb203b423/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="https://github.com/djancatibog" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://www.facebook.com/djanmatthew.catibog/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="https://www.instagram.com/djancatibog" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        </ul>
+      </section>
+
+    </div>
+    
+  </main>
 
   </main>
+
+  <footer class="foot">
+    Djan Matthew A. Catibog · BS Information Technology · De La Salle Lipa
+  </footer>
+
+  <script>
+    const emailLink = document.getElementById("copy-email");
+
+    emailLink.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const email = emailLink.dataset.email;
+
+      try {
+        await navigator.clipboard.writeText(email);
+      } catch (err) {
+        const temp = document.createElement("textarea");
+        temp.value = email;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand("copy");
+        document.body.removeChild(temp);
+      }
+
+      emailLink.classList.add("copied");
+      setTimeout(() => emailLink.classList.remove("copied"), 2000);
+    });
+  </script>
+
+</body>
+</html>
 
 </body>
 </html>
