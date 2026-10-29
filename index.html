@@ -6,6 +6,7 @@
   <title>Djan Matthew A. Catibog | Portfolio</title>
   <meta name="description" content="Portfolio of Djan Matthew A. Catibog, BS Information Technology student at De La Salle Lipa.">
   <link rel="stylesheet" href="style.css">
+    <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 
@@ -104,18 +105,56 @@
       </ul>
       <p class="note">Studying these through my coursework and practice projects.</p>
     </section>
-    <div class="two">
 
-      <section id="certifications">
+          <section id="certifications">
+      <div class="section-head">
         <h2 class="label">Certifications</h2>
-        <ul class="rows certs">
-          <li><span>Python Essentials 1</span><small>Certificate</small></li>
-          <li><span>Intro to Modern AI</span><small>Certificate</small></li>
-          <li><span>Digital Safety and Security Awareness</span><small>Certificate</small></li>
-          <li><span>Skills to Succeed</span><small>Certificate</small></li>
-          <li><span>DevRoutes</span><small>Seminar</small></li>
-        </ul>
-      </section>
+        <div class="arrows">
+          <button class="arrow" id="certPrev" type="button" aria-label="Previous certificate">←</button>
+          <button class="arrow" id="certNext" type="button" aria-label="Next certificate">→</button>
+        </div>
+      </div>
+
+      <div class="gallery" id="certGallery">
+
+        <figure class="cert">
+          <button class="cert-open" type="button">
+            <img src="images/cert-python-essentials-1.png" alt="Python Essentials 1 certificate" loading="lazy">
+          </button>
+          <figcaption><span>Python Essentials 1</span><small>Certificate</small></figcaption>
+        </figure>
+
+        <figure class="cert">
+          <button class="cert-open" type="button">
+            <img src="images/cert-intro-modern-ai.png" alt="Introduction to Modern AI certificate" loading="lazy">
+          </button>
+          <figcaption><span>Intro to Modern AI</span><small>Certificate</small></figcaption>
+        </figure>
+
+        <figure class="cert">
+          <button class="cert-open" type="button">
+            <img src="images/cert-digital-safety-security.png" alt="Digital Safety and Security Awareness certificate" loading="lazy">
+          </button>
+          <figcaption><span>Digital Safety and Security Awareness</span><small>Certificate</small></figcaption>
+        </figure>
+
+        <figure class="cert">
+          <button class="cert-open" type="button">
+            <img src="images/cert-skills-to-succeed.png" alt="Skills to Succeed certificate" loading="lazy">
+          </button>
+          <figcaption><span>Skills to Succeed</span><small>Certificate</small></figcaption>
+        </figure>
+
+        <figure class="cert">
+          <button class="cert-open" type="button">
+            <img src="images/cert-devroutes.png" alt="DevRoutes seminar certificate" loading="lazy">
+          </button>
+          <figcaption><span>DevRoutes</span><small>Seminar</small></figcaption>
+        </figure>
+
+      </div>
+      <p class="note">Swipe or use the arrows to browse. Tap a certificate to enlarge it.</p>
+    </section>
 
       <section id="contact">
         <h2 class="label">Contact</h2>
@@ -128,11 +167,16 @@
         </ul>
       </section>
 
-    </div>
+
     
   </main>
 
   </main>
+
+  <dialog id="lightbox" class="lightbox">
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close">✕</button>
+    <img id="lightboxImg" src="" alt="">
+  </dialog>
 
   <footer class="foot">
     Djan Matthew A. Catibog · BS Information Technology · De La Salle Lipa
@@ -159,6 +203,57 @@
       emailLink.classList.add("copied");
       setTimeout(() => emailLink.classList.remove("copied"), 2000);
     });
+  </script>
+
+ <script>
+    const items = document.querySelectorAll(".hero, .project, #skills, #certifications, #contact");
+
+    items.forEach((el, i) => {
+      el.classList.add("reveal");
+      if (el.classList.contains("project")) {
+        el.style.transitionDelay = (i % 3) * 0.08 + "s";
+      }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    items.forEach((el) => observer.observe(el));
+  </script>
+
+  </script>
+
+  <script>
+    const gallery = document.getElementById("certGallery");
+    const step = () => gallery.querySelector(".cert").offsetWidth + 16;
+
+    document.getElementById("certPrev").addEventListener("click", () => {
+      gallery.scrollBy({ left: -step(), behavior: "smooth" });
+    });
+    document.getElementById("certNext").addEventListener("click", () => {
+      gallery.scrollBy({ left: step(), behavior: "smooth" });
+    });
+
+    const box = document.getElementById("lightbox");
+    const boxImg = document.getElementById("lightboxImg");
+
+    gallery.querySelectorAll(".cert-open").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const img = btn.querySelector("img");
+        boxImg.src = img.src;
+        boxImg.alt = img.alt;
+        box.showModal();
+      });
+    });
+
+    document.getElementById("lightboxClose").addEventListener("click", () => box.close());
+    box.addEventListener("click", (e) => { if (e.target === box) box.close(); });
   </script>
 
 </body>

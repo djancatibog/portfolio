@@ -229,3 +229,121 @@ a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
   font-size: 0.78rem;
   color: #555;
 }
+
+
+/* Fade-in on scroll */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.js .reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+
+
+/* Project screenshots */
+.shot.has-img { padding: 0; border: 1px solid #1f1f1f; overflow: hidden; }
+.shot.has-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+
+
+
+/* Certificate gallery */
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.arrows { display: flex; gap: 8px; margin-bottom: 18px; }
+.arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: transparent;
+  color: #d4d4d4;
+  border: 1px solid #333;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.arrow:hover { border-color: #fff; color: #fff; }
+
+.gallery {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: #333 transparent;
+}
+.cert {
+  flex: 0 0 min(78%, 420px);
+  scroll-snap-align: start;
+  padding: 12px;
+  background: #0a0a0a;
+  border: 1px solid #1f1f1f;
+  border-radius: 16px;
+}
+.cert-open {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+.cert img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: #111;
+  border-radius: 10px;
+}
+.cert figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  font-size: 0.92rem;
+  color: #d4d4d4;
+}
+.cert figcaption small { font-size: 0.75rem; color: #666; white-space: nowrap; }
+
+button:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+/* Enlarge window */
+.lightbox {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  max-width: 94vw;
+  max-height: 94vh;
+  margin: auto;
+}
+.lightbox::backdrop { background: rgba(0, 0, 0, 0.92); }
+.lightbox img { display: block; max-width: 94vw; max-height: 88vh; border-radius: 10px; }
+.lightbox-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #333;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Contact is now a single column */
+.contact { max-width: 520px; }
