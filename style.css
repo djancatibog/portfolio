@@ -1,0 +1,99 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* Top bar */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px 24px;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #1f1f1f;
+}
+.brand { font-weight: 600; }
+.nav nav a {
+  margin-left: 20px;
+  font-size: 0.9rem;
+  color: #a3a3a3;
+  transition: color 0.2s ease;
+}
+.nav nav a:hover { color: #fff; }
+
+/* Intro */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding: 72px 0 48px;
+}
+.avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 4px #0a0a0a, 0 0 0 5px #333, 0 0 40px rgba(255, 255, 255, 0.08);
+}
+.hero h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.hero p { color: #a3a3a3; max-width: 520px; }
+
+.pill {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 4px 12px;
+  font-size: 0.78rem;
+  color: #d4d4d4;
+  border: 1px solid #333;
+  border-radius: 999px;
+}
+
+.actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+
+.btn {
+  padding: 11px 20px;
+  border-radius: 10px;
+  background: #fff;
+  color: #000;
+  border: 1px solid #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.btn:hover { background: #ececec; transform: translateY(-2px); }
+.btn.outline { background: transparent; color: #fff; border-color: #333; }
+.btn.outline:hover { background: #111; border-color: #fff; }
+
+a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+@media (max-width: 600px) {
+  .hero { padding-top: 48px; }
+  .nav nav a { margin-left: 14px; }
+}
